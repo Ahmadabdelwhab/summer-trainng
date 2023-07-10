@@ -1,6 +1,8 @@
 const validator = require("validator")
 const colors = require("colors")
 const prompt = require ("prompt-sync")({sigint: true})
+const read = require('read')
+
 /**this fucntion validate that the email is correct and has the domain "yahoo"  or Gmail*/
 function validEmail()
 {
@@ -66,6 +68,12 @@ function validAge()
 function validPassword()
 {
     
+        const password = read({ prompt: 'Password: ' , input:"process.stdin" , replace:"*"} , (err , cos)=>{
+            console.log(cos)
+        })
+
+    console.log(password)
 }
+validPassword();
 module.exports = {validEmail , validAge , validName , validGender , validPassword};
 
