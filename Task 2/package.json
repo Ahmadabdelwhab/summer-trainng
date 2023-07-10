@@ -1,0 +1,25 @@
+{
+  "name": "validation",
+  "version": "1.0.0",
+  "description": "back-end task for validation of input",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vallidation",
+    "back-end",
+    "regex"
+  ],
+  "author": "Ahmad Abdelwhab",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0",
+    "read": "^2.1.0",
+    "validator": "^13.9.0"
+  }
+}
