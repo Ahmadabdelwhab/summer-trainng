@@ -2,6 +2,7 @@ const validator = require("validator")
 const colors = require("colors")
 const prompt = require ("prompt-sync")({sigint: true})
 const read = require('read')
+const password_prompt = require('password-prompt')
 
 /**this fucntion validate that the email is correct and has the domain "yahoo"  or Gmail*/
 function validEmail()
@@ -9,10 +10,10 @@ function validEmail()
     while(true)
     {
 
-        let email = prompt("Enter your".yellow + " E-mail ".blue+"? : ".yellow);
+        const email = prompt("Enter your".yellow + " E-mail ".blue+"? : ".yellow);
         const reg = new RegExp('^[A-Za-z0-9._%+-]+@(yahoo|gmail)\.com$');
-        const flag = email.match(reg)
-        if(flag != null)
+        const flag = !!email.match(reg)
+        if(flag)
         {
             return email;
         }
@@ -23,11 +24,10 @@ function validName()
 {
     while(true)
     {
-
-        let name = prompt("Enter your".yellow + " Name ".blue+"? : ".yellow);
-        const reg = new RegExp('^[A-Za-z0-9._]{6 ,}$');
-        const flag = name.match(reg)
-        if(flag != null)
+        const name = prompt("Enter your".yellow + " Name ".blue+"? : ".yellow);
+        const reg = new RegExp('[A-Za-z0-9._]{6,}');
+        const flag = !!name.match(reg)
+        if(flag)
         {
             return name;
         }
@@ -37,7 +37,6 @@ function validName()
 }
 function validGender()
 {
-
         while(true)
         {
             let gender = prompt("Enter your".yellow + " Gender ".blue+"? (m|f): ".yellow);
@@ -46,18 +45,17 @@ function validGender()
             {
                 return gender;
             }
-            console.log("Invalid Gender there are only two!!!!!!!!".red.bold)
-        }
-        
+            console.log("Invalid Gender , there are only two!!!!!!!!".red.bold)
+        }   
 }
 function validAge()
 {
     while(true)
     {
         
-            let age = prompt("Enter your".yellow + " Age ".blue+"? : ".yellow);
+            const age = prompt("Enter your".yellow + " Age ".blue+"? : ".yellow);
             const isNumber = validator.isNumeric(age , true);
-            if(isNumber && parseInt(age))
+            if(isNumber && parseInt(age) >17)
             {
                 return parseInt(age);
             }
@@ -65,15 +63,28 @@ function validAge()
     }
         
     }
-function validPassword()
-{
-    
-        const password = read({ prompt: 'Password: ' , input:"process.stdin" , replace:"*"} , (err , cos)=>{
-            console.log(cos)
-        })
 
-    console.log(password)
+    const readline = require('readline');
+const { Console } = require("console")
+
+function validPassword() {
+    while(true)
+    {
+
+        const password = prompt("Enter your".yellow+" Password".blue+"? : ".yellow);
+        if(password.length < 8)
+        {
+            console.log("Invalid Password!".bgRed)
+        }
+        else
+        {
+            return password;
+        }
+    }
 }
-validPassword();
+
+
+
+
 module.exports = {validEmail , validAge , validName , validGender , validPassword};
 
