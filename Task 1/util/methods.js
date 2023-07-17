@@ -3,7 +3,7 @@ function add(...args) {
     
 }
 function sub(...args) {
-    return args.reduce((accumulator , currentValue)=>accumulator-currentValue , 0)
+    return args.reduce((accumulator , currentValue)=>accumulator-currentValue , args[0] * 2 )
     
 }
 function mult(...args) {
@@ -19,4 +19,4 @@ function div(...args) {
     
 }
 
-module.exports ={add , sub , mult  , div}
+module.exports ={add, sub, mult, div}

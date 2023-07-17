@@ -1,8 +1,6 @@
 const validator = require("validator")
 const colors = require("colors")
 const prompt = require ("prompt-sync")({sigint: true})
-const read = require('read')
-const password_prompt = require('password-prompt')
 
 /**this fucntion validate that the email is correct and has the domain "yahoo"  or Gmail*/
 function validEmail()
